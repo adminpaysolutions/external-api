@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Paysolutions-external-api
+  title: Paysolutions External API
   version: 1.0.0
 servers:
   - url: https://apis.paysolutions.asia
@@ -9,7 +9,7 @@ paths:
     post:
       tags:
         - default
-      summary: Inquiry-order
+      summary: Inquiry Order
       requestBody:
         content:
           application/json:
