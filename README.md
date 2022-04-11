@@ -1,2 +1,2 @@
-# internal-api
-internal-api
+# external-api
+external-api
