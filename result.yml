@@ -15,34 +15,97 @@ paths:
           application/json:
             schema:
               type: object
-              example:
-                merchantId: '{{merchantid}}'
-                orderNo: x
-                refNo: x
-                productDetail: QWERTY
+              $ref: '#/components/schemas/OrderRequest'
       parameters:
         - name: merchantId
           in: header
           schema:
             type: string
-          example: '{{merchantid}}'
+          example: '12345'
         - name: merchantSecretKey
           in: header
           schema:
             type: string
-          example: '{{merchant_secret_key}}'
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
+          example: 'saedewrtWsdf42'
         - name: apikey
           in: header
           schema:
             type: string
-          example: '{{merchant_api_key}}'
+          example: 'asdewrP2'
       responses:
         '200':
-          description: Successful response
+          description: A list of Order.
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderResponse'
+components:
+  schemas:
+    OrderRequest: # Schema name
+      type: object
+      properties:
+        merchantId:
+          type: string
+        orderNo:
+          type: string
+        refNo:
+          type: string
+        productDetail:
+          type: string   
+      example:   # Object-level example
+        merchantId: '12345'
+        orderNo: 'x when not use to inquery data' 
+        refNo:  'x when not use to inquery data' 
+        productDetail : 'QWERTY when not use to inquery data'
+    OrderResponse: # Schema name
+      type: object
+      properties:
+        ReferenceNo:
+          type: string
+        OrderNo:
+          type: string
+        MerchantID:
+          type: string
+        Total:
+          type: number
+        CardType:
+          type: string
+        CustomerEmal:
+          type: string
+        CurrencyCode:
+          type: string
+        Status:
+          type: string
+        StatusName:
+          type: string
+        PostBackUrl:
+          type: string
+        PostBackParameters:
+          type: string 
+        PostBackMethod:
+          type: string 
+        PostBackCompleted:
+          type: string 
+        OrderDateTime:
+          type: string
+        installment:
+          type: string
+      example:   # Object-level example
+         ReferenceNo: "869331151059"
+         OrderNo: "012345666"
+         MerchantID: "99999999"
+         ProductDetail: "Some Product Dtail"
+         Total: 3900.0
+         CardType: "V"
+         CustomerEmail: "some_customer@mail.com"
+         CurrencyCode: "OO"
+         Status: "CP"
+         StatusName: "COMPLETE"
+         PostBackUrl: "https://someweb.com?postback=1"
+         PostBackParameters: "COMPLETED"
+         PostBackMethod: "P"
+         PostBackCompleted: "true"
+         OrderDateTime: "2020-10-05T03:48:11.990+00:00"
+         installment: null
