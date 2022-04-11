@@ -8,7 +8,7 @@ paths:
   /order/orderdetailpost:
     post:
       tags:
-        - default
+        - Orders 
       summary: Inquiry Order
       requestBody:
         content:
